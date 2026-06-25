@@ -57,9 +57,9 @@ export default function Hero({ onStartClick }) {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[4/3] rounded-2xl bg-white p-1 border border-museum-gold/40 shadow-2xl relative overflow-hidden group">
               <ImagePlaceholder 
-                src="/assets/ba_dinh_square.jpg" 
+                src="/images/ba_dinh_square.jpg" 
                 alt="Quảng trường Ba Đình lịch sử" 
-                tip="Dán ảnh Quảng trường Ba Đình 2/9/1945 (Tạo thư mục src/assets/ và dán ảnh đặt tên ba_dinh_square.jpg)."
+                tip="Dán ảnh Quảng trường Ba Đình 2/9/1945 (Tạo thư mục public/images/ và dán ảnh đặt tên ba_dinh_square.jpg)."
                 aspectRatio="aspect-full w-full h-full"
               />
             </div>

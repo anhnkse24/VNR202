@@ -52,7 +52,7 @@ export default function AIChatBox() {
     }
   }, [messages, isTyping]);
 
-  const handleSend = (text) => {
+  const handleSend = async (text) => {
     if (!text.trim()) return;
 
     // 1. Add user message
@@ -65,26 +65,39 @@ export default function AIChatBox() {
     setInputValue('');
     setIsTyping(true);
 
-    // 2. Simulate AI response
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-8b-instant', // 8b model
+          messages: [
+            { 
+              role: 'system', 
+              content: 'Bạn là trợ lý học tập cho website lịch sử "VNR202 - Việt Nam 1930 - 1945". Bạn chỉ trả lời các câu hỏi liên quan đến nội dung lịch sử Việt Nam giai đoạn 1930 - 1945 hoặc các câu hỏi liên quan đến việc xây dựng, truyền tải và thuyết trình đề tài trang web này. Tuyệt đối từ chối trả lời các chủ đề không liên quan khác (như toán, lý, hóa, thời tiết, tin tức đời sống...). Trả lời ngắn gọn, súc tích.' 
+            },
+            { role: 'user', content: text }
+          ],
+          temperature: 0.5,
+          max_tokens: 300 // limit token usage
+        })
+      });
+      const data = await response.json();
+      const aiResponse = data.choices?.[0]?.message?.content ?? 'Xin lỗi, không có phản hồi.';
+      setMessages(prev => [...prev, { id: Date.now() + 1, sender: 'ai', text: aiResponse }]);
+    } catch (err) {
+      // Fallback to local knowledge base
       let aiResponse = "Xin lỗi, tôi chưa tìm thấy thông tin chính xác về câu hỏi của bạn trong dữ liệu 1930-1945. Bạn có thể hỏi về: Xô viết Nghệ Tĩnh, Luận cương Trần Phú, Cách mạng Tháng Tám, Đội Việt Nam Tuyên truyền Giải phóng quân hoặc Chỉ thị Nhật - Pháp bắn nhau.";
-      
       const cleanText = text.toLowerCase();
-      
       for (const item of KNOWLEDGE_BASE) {
-        if (item.keywords.some(keyword => cleanText.includes(keyword))) {
-          aiResponse = item.reply;
-          break;
-        }
+        if (item.keywords.some(k => cleanText.includes(k))) { aiResponse = item.reply; break; }
       }
-
-      setMessages(prev => [...prev, {
-        id: Date.now() + 1,
-        sender: 'ai',
-        text: aiResponse
-      }]);
-      setIsTyping(false);
-    }, 1200);
+      setMessages(prev => [...prev, { id: Date.now() + 1, sender: 'ai', text: aiResponse }]);
+    }
+    setIsTyping(false);
   };
 
   const sampleQuestions = [

@@ -178,7 +178,7 @@ export const historyPeriods = [
         content: {
           illustration: {
             title: "Tư liệu phong trào Xô viết Nghệ - Tĩnh 1930",
-            path: "/src/assets/xo_viet_nghe_tinh.jpg",
+            path: "/assets/xo_viet_nghe_tinh.jpg",
             tip: "Đề xuất ảnh: Tranh sơn mài hoặc ảnh chụp phong trào nông dân đấu tranh tại Hưng Nguyên."
           },
           context: {
@@ -320,7 +320,7 @@ export const historyPeriods = [
         content: {
           illustration: {
             title: "Mít tinh đón phái viên Pháp & Đông Dương Đại hội 1936 - 1937",
-            path: "/src/assets/dong_duong_dai_hoi.jpg",
+            path: "/assets/dong_duong_dai_hoi.jpg",
             tip: "Đề xuất ảnh: Ảnh tư liệu về buổi mít tinh đón toàn quyền Brévié hoặc đoàn Godart tại Hà Nội / Nam Kỳ."
           },
           movements: [
@@ -390,7 +390,7 @@ export const historyPeriods = [
         content: {
           illustration: {
             title: "Lễ thành lập Đội Việt Nam Tuyên truyền Giải phóng quân 22/12/1944",
-            path: "/src/assets/viet_nam_tuyen_truyen_giai_phong_quan.jpg",
+            path: "/assets/viet_nam_tuyen_truyen_giai_phong_quan.jpg",
             tip: "Đề xuất ảnh: Ảnh tư liệu 34 chiến sĩ đầu tiên đứng dưới cờ Tổ quốc tại khu rừng Trần Hưng Đạo (Cao Bằng)."
           },
           uprisings: [
@@ -426,7 +426,7 @@ export const historyPeriods = [
         content: {
           illustration: {
             title: "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Ba Đình 2/9/1945",
-            path: "/src/assets/tuyen_ngon_doc_lap.jpg",
+            path: "/assets/tuyen_ngon_doc_lap.jpg",
             tip: "Đề xuất ảnh: Ảnh chụp Bác Hồ đứng trên bục gỗ phát biểu tại Quảng trường Ba Đình."
           },
           intro: "Giữa tháng 8/1945, Nhật Bản tuyên bố đầu hàng Đồng minh vô điều kiện. Thời cơ 'ngàn năm có một' đã xuất hiện. Đảng lập tức họp Hội nghị toàn quốc tại Tân Trào (13-15/8) quyết định phát động Tổng khởi nghĩa giành chính quyền toàn quốc.",
@@ -454,7 +454,7 @@ export const keyHistoricalFigures = [
     name: "Hồ Chí Minh",
     role: "Lãnh tụ tối cao",
     avatarText: "HCM",
-    imagePath: "/src/assets/ho_chi_minh.jpg",
+    imagePath: "/assets/ho_chi_minh.jpg",
     bio: "Người sáng lập Đảng Cộng sản Việt Nam, trực tiếp xây dựng Mặt trận Việt Minh tại Pác Bó và đọc Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hòa."
   },
   {
@@ -462,7 +462,7 @@ export const keyHistoricalFigures = [
     name: "Trần Phú",
     role: "Tổng Bí thư đầu tiên",
     avatarText: "TP",
-    imagePath: "/src/assets/tran_phu.jpg",
+    imagePath: "/assets/tran_phu.jpg",
     bio: "Tác giả Luận cương chính trị tháng 10/1930. Người chiến sĩ kiên cường hy sinh tại nhà tù với lời nhắn bất hủ: 'Hãy giữ vững chí khí chiến đấu!'"
   },
   {
@@ -470,7 +470,7 @@ export const keyHistoricalFigures = [
     name: "Võ Nguyên Giáp",
     role: "Đại tướng",
     avatarText: "VNG",
-    imagePath: "/src/assets/vo_nguyen_giap.jpg",
+    imagePath: "/assets/vo_nguyen_giap.jpg",
     bio: "Được lãnh tụ Hồ Chí Minh giao nhiệm vụ thành lập đội quân chủ lực đầu tiên, ông đã đặt nền móng xây dựng lực lượng vũ trang cách mạng Việt Nam."
   },
   {
@@ -478,7 +478,7 @@ export const keyHistoricalFigures = [
     name: "Nguyễn Văn Cừ",
     role: "Tổng Bí thư Đảng (1938 - 1941)",
     avatarText: "NVC",
-    imagePath: "/src/assets/nguyen_van_cu.jpg",
+    imagePath: "/assets/nguyen_van_cu.jpg",
     bio: "Lãnh đạo Đảng chuyển hướng chiến lược tại Hội nghị Trung ương VI (11/1939) và tác giả tác phẩm lý luận kinh điển 'Tự chỉ trích'."
   }
 ];

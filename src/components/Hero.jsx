@@ -13,6 +13,15 @@ export default function Hero({ onStartClick }) {
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-museum-redDark via-museum-red to-red-950 text-white py-16 sm:py-24 border-b-4 border-museum-gold shadow-2xl">
       
+      {/* Sparks rising from bottom (Revolutionary Flame Theme) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
+        <div className="absolute bottom-[-10px] left-[15%] w-1.5 h-1.5 rounded-full bg-museum-gold/80 animate-rise-sparks" style={{ animationDelay: '0.5s', animationDuration: '6s' }} />
+        <div className="absolute bottom-[-10px] left-[35%] w-2 h-2 rounded-full bg-orange-500/70 animate-rise-sparks" style={{ animationDelay: '1.8s', animationDuration: '7s' }} />
+        <div className="absolute bottom-[-10px] left-[55%] w-1.5 h-1.5 rounded-full bg-yellow-400/90 animate-rise-sparks" style={{ animationDelay: '3.2s', animationDuration: '5s' }} />
+        <div className="absolute bottom-[-10px] left-[75%] w-2.5 h-2.5 rounded-full bg-museum-gold/60 animate-rise-sparks" style={{ animationDelay: '0.1s', animationDuration: '8s' }} />
+        <div className="absolute bottom-[-10px] left-[90%] w-1.5 h-1.5 rounded-full bg-orange-600/75 animate-rise-sparks" style={{ animationDelay: '4.5s', animationDuration: '6.5s' }} />
+      </div>
+
       {/* Decorative Traditional Sun Motif in background (Vietnamese Dong Son Bronze Drum Motif) */}
       <div className="absolute right-[-10%] top-[-20%] w-[500px] h-[500px] opacity-10 rounded-full border-[10px] border-dashed border-museum-gold animate-[spin_200s_linear_infinite]" />
       <div className="absolute left-[-5%] bottom-[-10%] w-[300px] h-[300px] opacity-10 rounded-full border-[4px] border-museum-gold" />

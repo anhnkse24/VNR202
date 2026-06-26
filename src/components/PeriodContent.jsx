@@ -85,13 +85,18 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
         {/* 3 Phases Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {historyPeriods.map((period, index) => (
-            <div 
+            <motion.div 
               key={period.id}
               onClick={() => {
                 setActivePeriod(period.id);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="bg-white rounded-xl border border-museum-red/10 p-6 shadow-museum hover:shadow-museum-hover transition-all duration-300 cursor-pointer text-left flex flex-col justify-between group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03, y: -6 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="museum-glass rounded-xl p-6 shadow-museum hover:shadow-museum-hover transition-all duration-300 cursor-pointer text-left flex flex-col justify-between group"
             >
               <div>
                 <div className="w-10 h-10 rounded-lg bg-museum-red/10 text-museum-red flex items-center justify-center font-bold text-lg mb-4">
@@ -110,12 +115,18 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
               <div className="flex items-center gap-1 text-xs font-bold text-museum-red mt-6">
                 Học bài này <ArrowRight size={14} />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Key Figures Spotlight */}
-        <div className="bg-museum-creamDark/40 border border-museum-red/10 rounded-2xl p-8 mb-16 text-left">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-museum-creamDark/40 border border-museum-red/10 rounded-2xl p-8 mb-16 text-left"
+        >
           <div className="flex items-center gap-2 mb-6">
             <UserCheck className="text-museum-red" size={24} />
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-museum-charcoal">
@@ -125,7 +136,15 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyHistoricalFigures.map((fig, idx) => (
-              <div key={idx} className="bg-white border border-museum-red/5 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="museum-glass p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center"
+              >
                 <ImagePlaceholder 
                   src={fig.imagePath} 
                   alt={`Chân dung ${fig.name}`} 
@@ -135,13 +154,19 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
                 <h4 className="font-serif text-base font-bold text-museum-charcoal">{fig.name}</h4>
                 <p className="text-xs text-museum-gold font-semibold uppercase mt-0.5">{fig.role}</p>
                 <p className="text-xs text-museum-charcoal/70 mt-2.5 leading-relaxed text-left">{fig.bio}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Summary Board */}
-        <div className="bg-white border-2 border-museum-gold rounded-2xl p-8 text-left relative overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="museum-glass border-2 border-museum-gold rounded-2xl p-8 text-left relative overflow-hidden"
+        >
           <div className="absolute right-0 top-0 w-24 h-24 bg-museum-gold/10 rounded-bl-full flex items-center justify-center text-museum-gold">
             <Award size={36} />
           </div>
@@ -151,7 +176,7 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
           <p className="text-sm sm:text-base text-museum-charcoal/80 leading-relaxed font-sans max-w-4xl">
             Từ năm 1930 đến năm 1945, dưới ngọn cờ lãnh đạo cách mạng của Đảng Cộng sản Đông Dương, nhân dân ta đã kiên trì thực hiện tiến trình giải phóng dân tộc. Ba cao trào cách mạng chính là các cuộc diễn tập vĩ đại về cả <strong>đường lối, lực lượng chính trị, lực lượng vũ trang và xây dựng căn cứ địa</strong>. Nhờ đó đã mở ra thời cơ chín muồi đưa tới sự thành công rực rỡ của Cách mạng Tháng Tám, khai sinh ra nước Việt Nam độc lập và tự chủ.
           </p>
-        </div>
+        </motion.div>
 
         {/* Navigation */}
         {getNavigationButtons()}
@@ -190,7 +215,15 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
       <div className="space-y-16">
         {period.subSections.map((sub, idx) => {
           return (
-            <div key={sub.id} className="scroll-mt-24" id={sub.id}>
+            <motion.div 
+              key={sub.id} 
+              className="scroll-mt-24" 
+              id={sub.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-120px" }}
+              transition={{ duration: 0.6 }}
+            >
               {/* Centralized Section Title */}
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-museum-red mb-4 border-b border-museum-red/5 pb-2">
                 {sub.title}
@@ -695,7 +728,7 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
                   )}
                 </>
               )}
-            </div>
+            </motion.div>
           );
         })}
       </div>

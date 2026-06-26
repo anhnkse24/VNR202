@@ -319,7 +319,7 @@ export const historyPeriods = [
         layout: "split",
         content: {
           illustration: {
-            title: "Mít tinh đón phái viên Pháp & Đông Dương Đại hội 1936 - 1937",
+            title: "Đoàn Nhà văn, nhà báo mít tinh tại khu Đấu Xảo Hà Nội để biểu dương lực lượng nhân ngày Quốc tế lao động, ngày 01/05/1938.",
             path: "/images/dong_duong_dai_hoi.jpg",
             tip: "Đề xuất ảnh: Ảnh tư liệu về buổi mít tinh đón toàn quyền Brévié hoặc đoàn Godart tại Hà Nội / Nam Kỳ."
           },
@@ -389,9 +389,10 @@ export const historyPeriods = [
         layout: "split",
         content: {
           illustration: {
-            title: "Lễ thành lập Đội Việt Nam Tuyên truyền Giải phóng quân 22/12/1944",
+            title: "Buổi lễ thành lập đội Việt Nam Tuyên truyền Giải phóng Quân",
             path: "/images/viet_nam_tuyen_truyen_giai_phong_quan.jpg",
-            tip: "Đề xuất ảnh: Ảnh tư liệu 34 chiến sĩ đầu tiên đứng dưới cờ Tổ quốc tại khu rừng Trần Hưng Đạo (Cao Bằng)."
+            tip: "Đề xuất ảnh: Ảnh tư liệu 34 chiến sĩ đầu tiên đứng dưới cờ Tổ quốc tại khu rừng Trần Hưng Đạo (Cao Bằng).",
+            aspectRatio: "aspect-[16/10] w-full"
           },
           uprisings: [
             { title: "Khởi nghĩa Bắc Sơn (27/09/1940)", desc: "Nổ ra ngay khi Nhật đánh vào Lạng Sơn. Dù thất bại, nó đã khai sinh ra đội du kích Bắc Sơn và khu căn cứ Bắc Sơn - Võ Nhai anh hùng." },

@@ -258,8 +258,9 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
                   src={sub.content.illustration.path} 
                   alt={sub.content.illustration.title}
                   tip={sub.content.illustration.tip}
-                  aspectRatio="aspect-[21/9] w-full"
-                  className="mb-8"
+                  aspectRatio={sub.content.illustration.aspectRatio || "aspect-[16/9] w-full"}
+                  className="mb-8 max-w-3xl mx-auto"
+                  showCaption={true}
                 />
               )}
 

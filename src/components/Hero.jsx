@@ -189,13 +189,18 @@ export default function Hero({ onStartClick }) {
 
           {/* Historical Artwork Representation / Illustration container */}
           <div className="lg:col-span-5 relative">
-            <div className="aspect-[4/3] rounded-2xl bg-white p-1 border border-museum-gold/40 shadow-2xl relative overflow-hidden group">
-              <ImagePlaceholder 
-                src="/images/ba_dinh_square.jpg" 
-                alt="Quảng trường Ba Đình lịch sử" 
-                tip="Dán ảnh Quảng trường Ba Đình 2/9/1945 (Tạo thư mục public/images/ và dán ảnh đặt tên ba_dinh_square.jpg)."
-                aspectRatio="aspect-full w-full h-full"
-              />
+            <div className="rounded-2xl bg-white p-2 border border-museum-gold/40 shadow-2xl relative group flex flex-col gap-2">
+              <div className="aspect-[4/3] rounded-xl overflow-hidden">
+                <ImagePlaceholder 
+                  src="/images/ba_dinh_square.jpg" 
+                  alt="Quảng trường Ba Đình lịch sử" 
+                  tip="Dán ảnh Quảng trường Ba Đình 2/9/1945 (Tạo thư mục public/images/ và dán ảnh đặt tên ba_dinh_square.jpg)."
+                  aspectRatio="aspect-full w-full h-full"
+                />
+              </div>
+              <p className="text-center font-serif text-[11px] sm:text-xs text-museum-charcoal/70 italic mt-0.5 px-2">
+                Ảnh tư liệu: Quảng trường Ba Đình trong ngày Độc lập 2/9/1945
+              </p>
             </div>
           </div>
 

@@ -1057,10 +1057,13 @@ export default function Mindmap() {
   };
 
   return (
-    <div className={isFullscreen 
-      ? "fixed inset-0 z-[9999] bg-[#faf6ee] p-6 flex flex-col h-screen w-screen" 
-      : "max-w-7xl mx-auto px-4 py-8 text-left relative z-10 flex flex-col h-[calc(100vh-260px)] min-h-[680px]"
-    }>
+    <div 
+      id="mindmap"
+      className={isFullscreen 
+        ? "fixed inset-0 z-[9999] bg-[#faf6ee] p-6 flex flex-col h-screen w-screen" 
+        : "max-w-7xl mx-auto px-4 py-8 text-left relative z-10 flex flex-col h-[calc(100vh-260px)] min-h-[680px] scroll-mt-24"
+      }
+    >
       
       {/* HEADER CONTROLS */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 shrink-0 bg-white/60 backdrop-blur border border-museum-red/10 p-4 rounded-2xl shadow-sm">

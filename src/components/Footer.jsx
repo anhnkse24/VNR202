@@ -6,6 +6,16 @@ export default function Footer({ setActivePeriod }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavClick = (itemId) => {
+    setActivePeriod(itemId);
+    setTimeout(() => {
+      const el = document.getElementById(itemId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 120);
+  };
+
   return (
     <footer className="bg-museum-charcoal text-museum-cream/90 pt-16 pb-8 mt-20 border-t-4 border-museum-gold">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,22 +43,22 @@ export default function Footer({ setActivePeriod }) {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => { setActivePeriod('overview'); scrollToTop(); }} className="hover:text-museum-gold transition-colors">
+                <button onClick={() => handleNavClick('overview')} className="hover:text-museum-gold transition-colors">
                   Tổng quan bài học
                 </button>
               </li>
               <li>
-                <button onClick={() => { setActivePeriod('p1'); scrollToTop(); }} className="hover:text-museum-gold transition-colors">
+                <button onClick={() => handleNavClick('p1')} className="hover:text-museum-gold transition-colors">
                   Thời kỳ phục hồi 1930 - 1935
                 </button>
               </li>
               <li>
-                <button onClick={() => { setActivePeriod('p2'); scrollToTop(); }} className="hover:text-museum-gold transition-colors">
+                <button onClick={() => handleNavClick('p2')} className="hover:text-museum-gold transition-colors">
                   Thời kỳ dân chủ 1936 - 1939
                 </button>
               </li>
               <li>
-                <button onClick={() => { setActivePeriod('p3'); scrollToTop(); }} className="hover:text-museum-gold transition-colors">
+                <button onClick={() => handleNavClick('p3')} className="hover:text-museum-gold transition-colors">
                   Giải phóng dân tộc 1939 - 1945
                 </button>
               </li>

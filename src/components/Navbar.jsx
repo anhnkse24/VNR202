@@ -10,6 +10,19 @@ export default function Navbar({ activePeriod, setActivePeriod, onSearchSelect }
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchRef = useRef(null);
 
+  const handleNavClick = (itemId) => {
+    setActivePeriod(itemId);
+    setIsMobileMenuOpen(false);
+    setTimeout(() => {
+      const el = document.getElementById(itemId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+      }
+    }, 120);
+  };
+
   // Track scrolling progress
   useEffect(() => {
     const handleScroll = () => {
@@ -78,7 +91,7 @@ export default function Navbar({ activePeriod, setActivePeriod, onSearchSelect }
         <div className="flex items-center justify-between h-20">
           
           {/* Logo / Title */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActivePeriod('overview')}>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNavClick('overview')}>
             <div className="bg-museum-red p-2.5 rounded-lg text-white shadow-md">
               <Landmark size={24} />
             </div>
@@ -98,7 +111,7 @@ export default function Navbar({ activePeriod, setActivePeriod, onSearchSelect }
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => setActivePeriod(item.id)}
+                  onClick={() => handleNavClick(item.id)}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
                     activePeriod === item.id
                       ? 'bg-museum-red text-white shadow-sm'
@@ -180,10 +193,7 @@ export default function Navbar({ activePeriod, setActivePeriod, onSearchSelect }
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => {
-                  setActivePeriod(item.id);
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => handleNavClick(item.id)}
                 className={`w-full text-left px-4 py-3 rounded-lg text-base font-semibold transition-all ${
                   activePeriod === item.id
                     ? 'bg-museum-red text-white'

@@ -1,6 +1,27 @@
 import React from 'react';
 import { Landmark, Users, Award, Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ImagePlaceholder from './ImagePlaceholder';
+
+const EMBERS = [
+  { left: '8%', size: 3, delay: 0.5, duration: 8 },
+  { left: '15%', size: 4, delay: 2, duration: 11 },
+  { left: '23%', size: 2, delay: 0, duration: 9 },
+  { left: '32%', size: 5, delay: 3.5, duration: 12 },
+  { left: '40%', size: 3, delay: 1, duration: 7 },
+  { left: '48%', size: 4, delay: 4.8, duration: 10 },
+  { left: '55%', size: 2.5, delay: 2.5, duration: 9.5 },
+  { left: '63%', size: 5, delay: 0.8, duration: 11.5 },
+  { left: '71%', size: 3, delay: 3.8, duration: 8.5 },
+  { left: '79%', size: 4, delay: 1.5, duration: 10.5 },
+  { left: '87%', size: 2, delay: 5.2, duration: 7.5 },
+  { left: '94%', size: 3, delay: 2.9, duration: 9.8 },
+  { left: '12%', size: 4.5, delay: 4.1, duration: 11.2 },
+  { left: '29%', size: 3, delay: 1.3, duration: 8.7 },
+  { left: '52%', size: 5, delay: 3.2, duration: 10.1 },
+  { left: '69%', size: 2, delay: 0.3, duration: 7.2 },
+  { left: '83%', size: 3.5, delay: 2.7, duration: 9.3 }
+];
 
 export default function Hero({ onStartClick }) {
   const stats = [
@@ -13,18 +34,80 @@ export default function Hero({ onStartClick }) {
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-museum-redDark via-museum-red to-red-950 text-white py-16 sm:py-24 border-b-4 border-museum-gold shadow-2xl">
       
-      {/* Sparks rising from bottom (Revolutionary Flame Theme) */}
+      {/* 1. Breathing Ambient Glows */}
+      <motion.div 
+        className="absolute -top-[15%] -left-[15%] w-[600px] h-[600px] rounded-full pointer-events-none z-0 blur-[100px] opacity-[0.25] transform-gpu"
+        style={{
+          background: 'radial-gradient(circle, #da251d 0%, rgba(218, 37, 29, 0) 70%)'
+        }}
+        animate={{
+          scale: [1.0, 1.15, 1.0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute -bottom-[15%] -right-[15%] w-[600px] h-[600px] rounded-full pointer-events-none z-0 blur-[100px] opacity-[0.25] transform-gpu"
+        style={{
+          background: 'radial-gradient(circle, #FFD700 0%, rgba(255, 215, 0, 0) 70%)'
+        }}
+        animate={{
+          scale: [1.0, 1.15, 1.0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 4
+        }}
+      />
+
+      {/* 2. Floating Golden Embers (Particles) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
-        <div className="absolute bottom-[-10px] left-[15%] w-1.5 h-1.5 rounded-full bg-museum-gold/80 animate-rise-sparks" style={{ animationDelay: '0.5s', animationDuration: '6s' }} />
-        <div className="absolute bottom-[-10px] left-[35%] w-2 h-2 rounded-full bg-orange-500/70 animate-rise-sparks" style={{ animationDelay: '1.8s', animationDuration: '7s' }} />
-        <div className="absolute bottom-[-10px] left-[55%] w-1.5 h-1.5 rounded-full bg-yellow-400/90 animate-rise-sparks" style={{ animationDelay: '3.2s', animationDuration: '5s' }} />
-        <div className="absolute bottom-[-10px] left-[75%] w-2.5 h-2.5 rounded-full bg-museum-gold/60 animate-rise-sparks" style={{ animationDelay: '0.1s', animationDuration: '8s' }} />
-        <div className="absolute bottom-[-10px] left-[90%] w-1.5 h-1.5 rounded-full bg-orange-600/75 animate-rise-sparks" style={{ animationDelay: '4.5s', animationDuration: '6.5s' }} />
+        {EMBERS.map((p, idx) => (
+          <motion.div
+            key={idx}
+            className="absolute rounded-full bg-[#FFD700]/70 pointer-events-none transform-gpu"
+            style={{
+              left: p.left,
+              width: p.size,
+              height: p.size,
+              bottom: -15,
+              boxShadow: '0 0 8px rgba(255, 215, 0, 0.7)'
+            }}
+            animate={{
+              y: [0, -600],
+              opacity: [0, 0.9, 0.9, 0]
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              delay: p.delay,
+              ease: "linear"
+            }}
+          />
+        ))}
       </div>
 
-      {/* Subtle Waving Vietnamese Flag (Cờ Đỏ Sao Vàng) in Background */}
-      <div className="absolute left-[8%] top-[15%] w-[180px] sm:w-[260px] md:w-[320px] aspect-[3/2] opacity-[0.09] pointer-events-none z-0 select-none animate-flag-wave">
-        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)]">
+      {/* 3. Animated Waving Flag Watermark */}
+      <motion.div 
+        className="absolute left-[8%] top-[15%] w-[180px] sm:w-[260px] md:w-[320px] aspect-[3/2] pointer-events-none z-0 select-none transform-gpu"
+        style={{ opacity: 0.12 }}
+        animate={{
+          y: [-10, 10, -10],
+          skewY: [2, -2, 2],
+          rotate: [-1, 1, -1]
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_12px_20px_rgba(0,0,0,0.45)]">
           {/* Flag Red Background */}
           <rect width="300" height="200" fill="#da251d" rx="2" />
           {/* Yellow Star in the center */}
@@ -33,12 +116,40 @@ export default function Hero({ onStartClick }) {
             fill="#ffff00" 
           />
         </svg>
-      </div>
+      </motion.div>
 
+      {/* 4. Subtle Topographic/Compass Grid */}
+      <motion.div 
+        className="absolute right-[-10%] top-[-15%] w-[550px] h-[550px] opacity-[0.06] pointer-events-none z-0 select-none transform-gpu"
+        animate={{
+          rotate: 360
+        }}
+        transition={{
+          duration: 150,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      >
+        <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" className="w-full h-full text-museum-gold">
+          <circle cx="100" cy="100" r="95" strokeWidth="0.5" strokeDasharray="4,4" />
+          <circle cx="100" cy="100" r="90" strokeWidth="0.25" />
+          <circle cx="100" cy="100" r="65" strokeWidth="0.5" strokeDasharray="2,2" />
+          <circle cx="100" cy="100" r="40" strokeWidth="0.25" />
+          <line x1="100" y1="5" x2="100" y2="195" strokeWidth="0.5" strokeDasharray="3,3" />
+          <line x1="5" y1="100" x2="195" y2="100" strokeWidth="0.5" strokeDasharray="3,3" />
+          <line x1="100" y1="10" x2="100" y2="15" strokeWidth="0.75" />
+          <line x1="100" y1="190" x2="100" y2="185" strokeWidth="0.75" />
+          <line x1="10" y1="100" x2="15" y2="100" strokeWidth="0.75" />
+          <line x1="190" y1="100" x2="185" y2="100" strokeWidth="0.75" />
+          <text x="100" y="24" fontSize="6" textAnchor="middle" fill="currentColor" fontWeight="bold">N</text>
+          <text x="100" y="184" fontSize="6" textAnchor="middle" fill="currentColor" fontWeight="bold">S</text>
+          <text x="24" y="102" fontSize="6" textAnchor="middle" fill="currentColor" fontWeight="bold">W</text>
+          <text x="176" y="102" fontSize="6" textAnchor="middle" fill="currentColor" fontWeight="bold">E</text>
+          <text x="105" y="48" fontSize="4" fill="currentColor" opacity="0.6">21°02'N</text>
+          <text x="145" y="96" fontSize="4" fill="currentColor" opacity="0.6">105°51'E</text>
+        </svg>
+      </motion.div>
 
-      {/* Decorative Traditional Sun Motif in background (Vietnamese Dong Son Bronze Drum Motif) */}
-      <div className="absolute right-[-10%] top-[-20%] w-[500px] h-[500px] opacity-10 rounded-full border-[10px] border-dashed border-museum-gold animate-[spin_200s_linear_infinite]" />
-      <div className="absolute left-[-5%] bottom-[-10%] w-[300px] h-[300px] opacity-10 rounded-full border-[4px] border-museum-gold" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

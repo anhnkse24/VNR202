@@ -12,13 +12,30 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
     const currentIndex = sequence.indexOf(activePeriod);
     
     if (direction === 'next' && currentIndex < sequence.length - 1) {
-      setActivePeriod(sequence[currentIndex + 1]);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const nextPeriod = sequence[currentIndex + 1];
+      setActivePeriod(nextPeriod);
+      setTimeout(() => {
+        const el = document.getElementById(nextPeriod);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+        }
+      }, 100);
     } else if (direction === 'prev' && currentIndex > 0) {
-      setActivePeriod(sequence[currentIndex - 1]);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const prevPeriod = sequence[currentIndex - 1];
+      setActivePeriod(prevPeriod);
+      setTimeout(() => {
+        const el = document.getElementById(prevPeriod);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
+
 
   const getNavigationButtons = () => {
     const sequence = ['overview', 'p1', 'p2', 'p3', 'mindmap'];
@@ -67,7 +84,8 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-6xl mx-auto px-4 py-12"
+        className="max-w-6xl mx-auto px-4 py-12 scroll-mt-24"
+        id="overview"
       >
         {/* Intro */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -89,7 +107,12 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
               key={period.id}
               onClick={() => {
                 setActivePeriod(period.id);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => {
+                  const el = document.getElementById(period.id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }, 100);
               }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -195,7 +218,7 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.4 }}
-      className="max-w-6xl mx-auto px-4 py-12 text-left"
+      className="max-w-6xl mx-auto px-4 py-12 text-left scroll-mt-24"
       id={period.id}
     >
       {/* Title */}
@@ -339,37 +362,61 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
 
                   {/* 1932-1935 Custom split content */}
                   {sub.id === 'p1-s3' && (
-                    <div className="space-y-6">
+                    <div className="space-y-8">
                       <p className="text-sm sm:text-base text-museum-charcoal/80 leading-relaxed bg-white p-5 rounded-lg border border-museum-red/10">
                         {sub.content.intro}
                       </p>
                       
-                      {/* Prison details */}
-                      <div className="bg-museum-creamDark/60 border border-museum-red/15 rounded-xl p-6">
-                        <h4 className="font-serif text-base font-bold text-museum-red uppercase tracking-wide mb-2">
-                          {sub.content.prisonTitle}
-                        </h4>
-                        <p className="text-xs sm:text-sm text-museum-charcoal/85 leading-relaxed">
-                          {sub.content.prisonDetails}
-                        </p>
-                      </div>
-
-                      {/* Key figures in jail */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {sub.content.keyFigures.map((fig, idx) => (
-                          <div key={idx} className="bg-white p-5 rounded-xl border border-museum-red/10 shadow-sm flex flex-col justify-between">
-                            <div>
-                              <span className="text-[10px] font-bold text-museum-gold bg-museum-gold/10 px-2 py-0.5 rounded uppercase">
-                                {fig.role}
-                              </span>
-                              <h4 className="font-serif text-base font-bold text-museum-charcoal mt-2 mb-1">{fig.name}</h4>
-                              <p className="text-xs italic text-museum-red font-semibold">"{fig.quote}"</p>
-                            </div>
-                            <p className="text-xs text-museum-charcoal/70 mt-3 pt-3 border-t border-dashed border-museum-red/10">
-                              {fig.desc}
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        {/* Left: Prison & Figures */}
+                        <div className="lg:col-span-7 space-y-6">
+                          <div className="bg-museum-creamDark/60 border border-museum-red/15 rounded-xl p-6">
+                            <h4 className="font-serif text-base font-bold text-museum-red uppercase tracking-wide mb-2">
+                              {sub.content.prisonTitle}
+                            </h4>
+                            <p className="text-xs sm:text-sm text-museum-charcoal/85 leading-relaxed">
+                              {sub.content.prisonDetails}
                             </p>
                           </div>
-                        ))}
+
+                          {/* Key figures in jail */}
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            {sub.content.keyFigures.map((fig, idx) => (
+                              <div key={idx} className="bg-white p-4 rounded-xl border border-museum-red/10 shadow-sm flex flex-col justify-between">
+                                <div>
+                                  <span className="text-[9px] font-bold text-museum-gold bg-museum-gold/10 px-2 py-0.5 rounded uppercase">
+                                    {fig.role}
+                                  </span>
+                                  <h4 className="font-serif text-sm font-bold text-museum-charcoal mt-2 mb-1">{fig.name}</h4>
+                                  <p className="text-[11px] italic text-museum-red font-semibold leading-snug">"{fig.quote}"</p>
+                                </div>
+                                <p className="text-[10px] text-museum-charcoal/70 mt-2.5 pt-2.5 border-t border-dashed border-museum-red/10 leading-relaxed">
+                                  {fig.desc}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Right: Milestones (Chronology-like) */}
+                        <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-museum-red/10 shadow-sm">
+                          <h4 className="font-serif text-lg font-bold text-museum-charcoal mb-4">
+                            Các mốc khôi phục hệ thống tổ chức
+                          </h4>
+                          <div className="relative pl-6 border-l-2 border-museum-red/20 space-y-6">
+                            {sub.content.milestones.map((item, i) => (
+                              <div key={i} className="relative">
+                                <span className="absolute -left-[30px] top-1 w-3.5 h-3.5 rounded-full bg-museum-gold border-2 border-white" />
+                                <span className="text-xs font-bold text-museum-red block">
+                                  {item.date}
+                                </span>
+                                <p className="text-xs sm:text-sm text-museum-charcoal/80 mt-1">
+                                  {item.event}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}

@@ -241,7 +241,7 @@ export const historyPeriods = [
       {
         id: "p1-s3",
         title: "3. Khôi phục phong trào cách mạng 1932 - 1935",
-        layout: "grid",
+        layout: "split",
         content: {
           intro: "Từ năm 1931, phong trào cách mạng gặp muôn vàn khó khăn do sự đàn áp tàn khốc của thực dân Pháp. Tuy nhiên, ngọn lửa đấu tranh vẫn được duy trì bền bỉ cả ở trong và ngoài các nhà tù đế quốc.",
           prisonTitle: "Hoạt động đấu tranh trong nhà tù đế quốc",

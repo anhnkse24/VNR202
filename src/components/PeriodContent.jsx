@@ -8,7 +8,7 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
   
   // Navigation handler
   const handleNavigate = (direction) => {
-    const sequence = ['overview', 'p1', 'p2', 'p3', 'quiz'];
+    const sequence = ['overview', 'p1', 'p2', 'p3', 'mindmap'];
     const currentIndex = sequence.indexOf(activePeriod);
     
     if (direction === 'next' && currentIndex < sequence.length - 1) {
@@ -21,7 +21,7 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
   };
 
   const getNavigationButtons = () => {
-    const sequence = ['overview', 'p1', 'p2', 'p3', 'quiz'];
+    const sequence = ['overview', 'p1', 'p2', 'p3', 'mindmap'];
     const currentIndex = sequence.indexOf(activePeriod);
     const prevItem = currentIndex > 0 ? sequence[currentIndex - 1] : null;
     const nextItem = currentIndex < sequence.length - 1 ? sequence[currentIndex + 1] : null;
@@ -31,7 +31,7 @@ export default function PeriodContent({ activePeriod, setActivePeriod, selectedE
       p1: "Thời kỳ 1930 - 1935",
       p2: "Thời kỳ 1936 - 1939",
       p3: "Thời kỳ 1939 - 1945",
-      quiz: "Trắc nghiệm ôn tập"
+      mindmap: "Sơ đồ tư duy"
     };
 
     return (

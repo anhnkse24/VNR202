@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Timeline from './components/Timeline';
 import PeriodContent from './components/PeriodContent';
-import Quiz from './components/Quiz';
+import Mindmap from './components/Mindmap';
 import Footer from './components/Footer';
 import AIChatBox from './components/AIChatBox';
 
@@ -50,6 +50,24 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('vnr_active_period', activePeriod);
   }, [activePeriod]);
+
+  // Handle navigatePeriod event from interactive mindmap
+  useEffect(() => {
+    const handleNavigatePeriod = (e) => {
+      const { periodId, subSectionId } = e.detail;
+      setActivePeriod(periodId);
+      if (subSectionId) {
+        setTimeout(() => {
+          const el = document.getElementById(subSectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 200);
+      }
+    };
+    window.addEventListener('navigatePeriod', handleNavigatePeriod);
+    return () => window.removeEventListener('navigatePeriod', handleNavigatePeriod);
+  }, []);
 
 
   // When user clicks a search result in the Navbar
@@ -130,8 +148,8 @@ export default function App() {
       {/* Hero Banner Section */}
       <Hero onStartClick={handleHeroStart} />
 
-      {/* Interactive Timeline Section (renders everywhere except directly inside the active quiz view for clean focus, but keeping it visible is great for context) */}
-      {activePeriod !== 'quiz' && (
+      {/* Interactive Timeline Section (renders everywhere except directly inside the active mindmap view for clean focus, but keeping it visible is great for context) */}
+      {activePeriod !== 'mindmap' && (
         <Timeline 
           activePeriod={activePeriod} 
           setActivePeriod={setActivePeriod} 
@@ -142,8 +160,8 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-grow">
-        {activePeriod === 'quiz' ? (
-          <Quiz />
+        {activePeriod === 'mindmap' ? (
+          <Mindmap />
         ) : (
           <PeriodContent 
             activePeriod={activePeriod} 

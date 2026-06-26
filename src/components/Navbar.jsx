@@ -63,7 +63,7 @@ export default function Navbar({ activePeriod, setActivePeriod, onSearchSelect }
     { id: 'p1', label: '1930 - 1935' },
     { id: 'p2', label: '1936 - 1939' },
     { id: 'p3', label: '1939 - 1945' },
-    { id: 'quiz', label: 'Trắc nghiệm' }
+    { id: 'mindmap', label: 'Sơ đồ tư duy' }
   ];
 
   return (

@@ -22,6 +22,20 @@ export default function Hero({ onStartClick }) {
         <div className="absolute bottom-[-10px] left-[90%] w-1.5 h-1.5 rounded-full bg-orange-600/75 animate-rise-sparks" style={{ animationDelay: '4.5s', animationDuration: '6.5s' }} />
       </div>
 
+      {/* Subtle Waving Vietnamese Flag (Cờ Đỏ Sao Vàng) in Background */}
+      <div className="absolute left-[8%] top-[15%] w-[180px] sm:w-[260px] md:w-[320px] aspect-[3/2] opacity-[0.09] pointer-events-none z-0 select-none animate-flag-wave">
+        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)]">
+          {/* Flag Red Background */}
+          <rect width="300" height="200" fill="#da251d" rx="2" />
+          {/* Yellow Star in the center */}
+          <polygon 
+            points="150,55 162,93 201,93 169,116 181,154 150,131 119,154 131,116 99,93 138,93" 
+            fill="#ffff00" 
+          />
+        </svg>
+      </div>
+
+
       {/* Decorative Traditional Sun Motif in background (Vietnamese Dong Son Bronze Drum Motif) */}
       <div className="absolute right-[-10%] top-[-20%] w-[500px] h-[500px] opacity-10 rounded-full border-[10px] border-dashed border-museum-gold animate-[spin_200s_linear_infinite]" />
       <div className="absolute left-[-5%] bottom-[-10%] w-[300px] h-[300px] opacity-10 rounded-full border-[4px] border-museum-gold" />

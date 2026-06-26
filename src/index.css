@@ -119,3 +119,13 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+@keyframes flag-wave {
+  0%, 100% { transform: rotate(-3deg) skewY(-1deg) translateY(0); }
+  50% { transform: rotate(1deg) skewY(1deg) translateY(-8px); }
+}
+
+.animate-flag-wave {
+  animation: flag-wave 6s ease-in-out infinite;
+}
+
+
